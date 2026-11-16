@@ -91,6 +91,37 @@ Prerequisites
    docker-compose down
 
 
+IV) Screenshots Walkthrough
 
+1. Docker Containers Running (Elasticsearch, Logstash, Kibana, Filebeat)
 
+   ![Docker Containers](./images/Screenshot%202026-11-16%20163529.png)
+
+2. Java App (`PatientController.java`) Logging with MDC
+
+   ![PatientController MDC Logging](./images/Screenshot%202026-11-16%20163424.png)
+
+3. Structured JSON Logs Written to `./logs/his-application.json`
+
+   ![Structured JSON Logs](./images/Screenshot%202026-11-16%20163442.png)
+
+4. Kibana Home (`http://localhost:5601`) -> Open **Stack Management**
+
+   ![Kibana Home](./images/Screenshot%202026-11-16%20162755.png)
+
+5. Stack Management -> **Data Views**
+
+   ![Kibana Data Views](./images/Screenshot%202026-11-16%20162901.png)
+
+6. Create Data View (`his-clinical-logs-*` matching `his-clinical-logs-2026.11.16`)
+
+   ![Create Data View](./images/Screenshot%202026-11-16%20162936.png)
+
+7. Open **Analytics -> Discover**
+
+   ![Kibana Analytics](./images/Screenshot%202026-11-16%20163030.png)
+
+8. Search Logs in **Discover** (`PAT-1001`, `doctor_id: DR-402`, `department: CARDIOLOGY`, `event_type: PATIENT_ACCESS`)
+
+   ![Kibana Discover Results](./images/Screenshot%202026-11-16%20163505.png)
 
