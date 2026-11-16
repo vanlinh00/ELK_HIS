@@ -50,7 +50,7 @@ Prerequisites
 
 - Docker & Docker Compose
 
-- Java 21 + Maven
+- Java 17 + Maven
 
 1. Start ELK Stack + Filebeat
 
