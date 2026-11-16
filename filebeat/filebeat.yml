@@ -1,0 +1,21 @@
+filebeat.inputs:
+  - type: filestream
+    id: his-app-logs
+    enabled: true
+    paths:
+      - /var/log/his/*.json
+    parsers:
+      - ndjson:
+          keys_under_root: true
+          add_error_key: true
+          overwrite_keys: true
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - drop_fields:
+      fields: ["agent.ephemeral_id", "ecs.version"]
+      ignore_missing: true
+
+output.logstash:
+  hosts: ["logstash:5044"]

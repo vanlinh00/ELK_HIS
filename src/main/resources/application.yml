@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: his-core
+
+logging:
+  level:
+    root: INFO
+    com.hospital.his: INFO
+
+his:
+  audit:
+    controlled-substances:
+      - Morphine
+      - Fentanyl
+      - Oxycodone
+      - Midazolam
+      - Hydromorphone

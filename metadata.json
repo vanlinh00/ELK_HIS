@@ -1,0 +1,6 @@
+{
+  "name": "HIS ELK Backend",
+  "description": "Java Spring Boot Hospital Information System (HIS) integrated with ELK Stack (Elasticsearch, Logstash, Kibana), Filebeat, Spring Security MDC auditing, and HL7/FHIR log parsing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

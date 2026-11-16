@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%X{doctor_id:-SYSTEM}|%X{event_type:-APP}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="JSON_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/his-application.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/his-application.%d{yyyy-MM-dd}.json</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"service":"his-core","environment":"production"}</customFields>
+            <includeMdcKeyName>trace_id</includeMdcKeyName>
+            <includeMdcKeyName>event_type</includeMdcKeyName>
+            <includeMdcKeyName>resource_type</includeMdcKeyName>
+            <includeMdcKeyName>patient_id</includeMdcKeyName>
+            <includeMdcKeyName>doctor_id</includeMdcKeyName>
+            <includeMdcKeyName>department</includeMdcKeyName>
+            <includeMdcKeyName>drug_name</includeMdcKeyName>
+            <includeMdcKeyName>dosage</includeMdcKeyName>
+            <includeMdcKeyName>outcome</includeMdcKeyName>
+            <includeMdcKeyName>duration_ms</includeMdcKeyName>
+            <includeMdcKeyName>hl7_raw</includeMdcKeyName>
+            <includeMdcKeyName>hl7_message_type</includeMdcKeyName>
+            <includeMdcKeyName>fhir_resource_type</includeMdcKeyName>
+            <includeMdcKeyName>fhir_resource_id</includeMdcKeyName>
+            <includeMdcKeyName>fhir_loinc_code</includeMdcKeyName>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="JSON_FILE" />
+    </root>
+</configuration>
