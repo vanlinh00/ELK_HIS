@@ -42,3 +42,55 @@ How Data Flows Through This Project
    - Elasticsearch (:9200) indexes every JSON field for fast searching.
 
    - Kibana (:5601) connects to Elasticsearch so you can search and filter his-clinical-logs-* in the browser.
+
+
+III) Quickstart Guide
+
+Prerequisites
+
+- Docker & Docker Compose
+
+- Java 21 + Maven
+
+1. Start ELK Stack + Filebeat
+
+   mkdir -p logs
+
+   docker-compose up -d
+
+   - Wait ~30-60s for services to start. Check status: docker-compose ps
+
+2. Run the Java App
+
+   mvn spring-boot:run
+
+   - Starts on http://localhost:8080 and writes logs to ./logs/his-application.json
+
+3. Send a Test Request
+
+   curl -X GET http://localhost:8080/api/v1/patients/PAT-1001/emr \
+
+     -H "X-Doctor-Id: DR-402" \
+
+     -H "X-Department: CARDIOLOGY"
+
+   - Or import HIS_ELK_Demo.postman_collection.json into Postman
+
+4. View Logs in Kibana
+
+   - Open http://localhost:5601
+
+   - Go to Stack Management -> Data Views -> Create data view
+
+   - Set Index pattern: his-clinical-logs-* and Timestamp field: @timestamp
+
+   - Open Analytics -> Discover and filter by tags: "hipaa_audit" or patient_id: "PAT-1001"
+
+5. Stop the Stack
+
+   docker-compose down
+
+
+
+
+
