@@ -1,4 +1,8 @@
 
+Enterprise / Hospital Production: Java (JSON file/stdout) ➔ Filebeat ➔ Logstash ➔ Elasticsearch
+
+Steps:
+
 Java App: Writes JSON logs (with patient_id, doctor_id from MDC) to ./logs/his-application.json.
 
 Filebeat: Reads new lines from the mounted ./logs folder and sends them to logstash:5044.
