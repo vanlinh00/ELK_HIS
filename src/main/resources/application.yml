@@ -9,12 +9,3 @@ logging:
   level:
     root: INFO
     com.hospital.his: INFO
-
-his:
-  audit:
-    controlled-substances:
-      - Morphine
-      - Fentanyl
-      - Oxycodone
-      - Midazolam
-      - Hydromorphone
