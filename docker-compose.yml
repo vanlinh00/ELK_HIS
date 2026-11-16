@@ -52,6 +52,7 @@ services:
     image: docker.elastic.co/beats/filebeat:8.13.0
     container_name: his-filebeat
     user: root
+    command: ["--strict.perms=false", "-e"]
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - ./logs:/var/log/his:ro
